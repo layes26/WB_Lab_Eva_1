@@ -1,1 +1,43 @@
-gvdffgdgfd
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Form</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <h1>Enter User Info</h1>
+        <form onsubmit="handleSubmit(event)">
+            <input type="text" id="name" placeholder="Name" required style="width: 250px; padding: 7px;"><br><br>
+
+            <input type="email" id="mail" placeholder="Mail" required style="width: 250px; padding: 7px;"><br><br>
+
+            <input type="text" id="id" placeholder="ID" required style="width: 250px; padding: 7px;"><br><br>
+
+            <button type="submit" style="width:60px; height:60px; border-radius:50%;">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const mail = document.getElementById("mail").value.trim();
+            const id = document.getElementById("id").value.trim();
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push({
+                name,
+                mail,
+                id
+            });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            window.open('secondpage.html', '_blank');
+        }
+    </script>
+</body>
+
+</html>
