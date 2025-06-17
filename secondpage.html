@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Table</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <h1>User Table</h1>
+        <table border="1" cellpadding="10" cellspacing="0" style="margin:auto;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Mail</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const tbody = document.getElementById('userTableBody');
+
+        if (users.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="3">No user data available.</td></tr>';
+        } else {
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.mail}</td>
+                    <td>${user.id}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+
+</html>
