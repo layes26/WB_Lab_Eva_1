@@ -9,6 +9,7 @@
 
     <div align="center">
         <h1>Enter User Info</h1>
+        <h1>You are hacked</h1>
         <form onsubmit="handleSubmit(event)">
             <input type="text" id="name" placeholder="Name" required style="width: 250px; padding: 7px;"><br><br>
 
@@ -28,13 +29,10 @@
             const id = document.getElementById("id").value.trim();
 
             let users = JSON.parse(localStorage.getItem('users')) || [];
-            users.push({
-                name,
-                mail,
-                id
-            });
+            users.push({ name, mail, id });
             localStorage.setItem('users', JSON.stringify(users));
 
+            alert("Thank you, " + name + "! Your information has been saved.");
             window.open('secondpage.html', '_blank');
         }
     </script>
